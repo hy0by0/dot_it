@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         score_text.text = "Score:" + resultScore;
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
-        PlayerController_2 playerCnt = playerObj.GetComponent<PlayerController_2>();
+        PlayerController playerCnt = playerObj.GetComponent<PlayerController>();
         if (playerCnt.score != 0)
         {
             resultScore += playerCnt.score;

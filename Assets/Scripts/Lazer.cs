@@ -5,19 +5,22 @@ using UnityEngine.UI;
 
 public class Lazer : MonoBehaviour
 {
+    [Header("LazerのPrefabをここに入れる")]
     [SerializeField] private GameObject lazerPrefab;
-    const float max_Length = 23.0f;  //レーザーの最大長
+    [Header("レーザーの最大長")]
+    public const float max_Length = 23.0f;  //レーザーの最大長
 
-    const int max_Reflect = 3;  //反射回数
-    private GameObject preWall;
+    [Header("反射回数")]
+    public const int max_Reflect = 3;  //反射回数
+    private GameObject preWall; //同じ方向の壁に連続で当たらないようにするため
 
-    /**
-     * レーザー生成関数
-     * @param {Vector3} origin - レーザーの原点
-     * @param {Vector3} direction - レーザーの方向
-     * @param {int} n - 何本目か(0はじまり)
-    **/
-    public void creat(Vector3 origin, Vector2 direction, int n)
+    /// <summary>
+    /// レーザー生成関数
+    /// </summary>
+    /// <param name="origin">レーザーの原点座標</param>
+    /// <param name="direction">レーザーの方向</param>
+    /// <param name="n">今何本目か(0ははじまり)</param>
+    public void creat(Vector3 origin, Vector2 direction, int n) //
     {
         if (n == 0) preWall = null;
         if (n < max_Reflect + 1)
@@ -29,7 +32,8 @@ public class Lazer : MonoBehaviour
 
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.collider.gameObject != preWall && hit.collider.gameObject.tag != "Player")
+                //同じ方向の壁に連続で当たらないようにするため、preWallを除外、反射ごとに更新させる。
+                if (hit.collider.gameObject != preWall && hit.collider.gameObject.tag == "Wall")
                 {
                     Vector3 endPos = hit.point;
                     Vector2 reflectDirection = Vector2.Reflect(direction, hit.normal);

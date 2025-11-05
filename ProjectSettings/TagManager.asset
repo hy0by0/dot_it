@@ -7,7 +7,7 @@ TagManager:
   - Item
   - Wall
   - Damage
-  - Lazer
+  - Laser
   layers:
   - Default
   - TransparentFX

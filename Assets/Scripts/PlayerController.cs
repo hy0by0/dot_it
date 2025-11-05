@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool jumpFlag = false;
     float Scale_X; //Œü‚«•ÏX—p‚Ì‘å‚«‚³‚w•ûŒü‚Ì•Ï”
 
-    public LaserStarter lazerStarter;//LazerStarter‚ğ“ü‚ê‚é
+    public LaserStarter lazerStarter;//LaserStarter‚ğ“ü‚ê‚é
     Rigidbody2D rbody;
 
     public static string gameState = "playing";
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rbody = this.GetComponent<Rigidbody2D>();
-        //lazer = lazerObj.GetComponent<Line>();
+        //laser = laserObj.GetComponent<Line>();
         //animator = GetComponent<Animator>();
         //nowAnime = stopAnime;
         //oldAnime = stopAnime;
@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             Goal();
         }
 
-        //if (collider.gameObject.tag == "Damage" || collider.gameObject.tag == "Lazer")
+        //if (collider.gameObject.tag == "Damage" || collider.gameObject.tag == "Laser")
         //{
         //    Debug.Log("<color=red>’É‚¢I</color>");
         //    Miss();

@@ -115,7 +115,7 @@ public class Laser : MonoBehaviour
             }
         }
 
-        // 現状変化が反映されていない！
+        // 最初の位置がずれている？
         //全部のレーザー辺に対して始点と終点を更新し、EdgeCollider2Dを1つずつ更新していく
         foreach (EdgeCollider2D edge in lasers_Collider)
         {

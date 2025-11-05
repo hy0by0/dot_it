@@ -350,14 +350,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 246423383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9796b6b361e6a64e8c98d234f8e9d60, type: 3}
+  m_Script: {fileID: 11500000, guid: 826d38507f220324a86e4c89353c5cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  laserMother: {fileID: 0}
-  direction_First: {x: 1, y: 1}
-  newLazer: {fileID: 0}
-  laser: {fileID: 0}
-  axisX_Lazer: 0
+  laserMother: {fileID: 3627120283810903497, guid: 2a6ac080fa7d011439b9326af928dc5e, type: 3}
 --- !u!1 &472032449
 GameObject:
   m_ObjectHideFlags: 0

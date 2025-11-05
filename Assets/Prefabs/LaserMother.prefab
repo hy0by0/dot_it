@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0fe1b8dc69241f48b2667bc19e68226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lazerPrefab: {fileID: 6103521786597352152, guid: 3eeeb92d4f0930e408d83764009df3ec, type: 3}
+  laserPrefab: {fileID: 6103521786597352152, guid: 3eeeb92d4f0930e408d83764009df3ec, type: 3}
+  lasers_Line: []
+  nowOrigin: {x: 0, y: 0, z: 0}
+  nowDirection: {x: 0, y: 0}

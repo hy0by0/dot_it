@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool jumpFlag = false;
     float Scale_X; //Œü‚«•ÏX—p‚Ì‘å‚«‚³‚w•ûŒü‚Ì•Ï”
 
-    public LazerStarter lazerStarter;//LazerStarter‚ğ“ü‚ê‚é
+    public LaserStarter lazerStarter;//LazerStarter‚ğ“ü‚ê‚é
     Rigidbody2D rbody;
 
     public static string gameState = "playing";

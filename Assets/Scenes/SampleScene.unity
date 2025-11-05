@@ -353,7 +353,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9796b6b361e6a64e8c98d234f8e9d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lazerMother: {fileID: 3627120283810903497, guid: 2a6ac080fa7d011439b9326af928dc5e, type: 3}
+  laserMother: {fileID: 0}
+  direction_First: {x: 1, y: 1}
+  newLazer: {fileID: 0}
+  laser: {fileID: 0}
+  axisX_Lazer: 0
 --- !u!1 &472032449
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1020,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3645778670098235070, guid: 906f3aefccabf9f47a6dcc4599c26225, type: 3}
       propertyPath: m_Name
-      value: Lazer
+      value: Laser
       objectReference: {fileID: 0}
     - target: {fileID: 3645778670098235070, guid: 906f3aefccabf9f47a6dcc4599c26225, type: 3}
       propertyPath: m_IsActive

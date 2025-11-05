@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3011803891408668258}
   - component: {fileID: 7862970751320430297}
   m_Layer: 0
-  m_Name: LazerMother
+  m_Name: LaserMother
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -26,9 +26,10 @@ public class LaserStarter : MonoBehaviour
         }
 
         axisX_Lazer = Input.GetAxisRaw("Horizontal"); //ç∂âEì¸óÕÇä¥ím
-        //newLaser.transform.position = this.gameObject.transform.position;
-        Debug.Log(this.gameObject.transform.position);
-        laser.move(this.gameObject.transform.position, Quaternion.Euler(0f, 0f, axisX_Lazer*rotate_Speed) * laser.getDirection());
+
+        
+
+        laser.move(this.gameObject.transform.position, this.gameObject.transform.up);
 
     }
 

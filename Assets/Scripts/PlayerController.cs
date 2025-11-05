@@ -55,7 +55,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
+        // マウスの方向へ向きを追随させる
+        var pos = Camera.main.WorldToScreenPoint(this.transform.localPosition);
+        var rotation = Quaternion.LookRotation(Vector3.forward, Input.mousePosition - pos);
+        this.transform.localRotation = rotation;
 
         //向き変更
         //if (axisX > 0)

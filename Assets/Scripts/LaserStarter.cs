@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//PlayerContorollerにまとめたほうがいいかも？
 public class LaserStarter : MonoBehaviour
 {
     [Header("LazermotherPrefabをここに入れる")]
@@ -15,7 +16,10 @@ public class LaserStarter : MonoBehaviour
 
     public void Start()
     {
-        axisX_Lazer = 0.0f;
+        //axisX_Lazer = 0.0f;
+        newLaser = Instantiate(laserMother, this.gameObject.transform.position, Quaternion.identity);//lazerMotherを生成
+        laser = newLaser.GetComponent<Laser>();
+        laser.creat(newLaser.transform.position, direction_First, 0); //ここで最初の０反射目レーザーを生成
     }
 
     public void Update()
@@ -25,7 +29,7 @@ public class LaserStarter : MonoBehaviour
             return;
         }
 
-        axisX_Lazer = Input.GetAxisRaw("Horizontal"); //左右入力を感知
+        //axisX_Lazer = Input.GetAxisRaw("Horizontal"); //左右入力を感知
 
         
 

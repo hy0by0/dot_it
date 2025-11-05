@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            lazerStarter.Click();
+            //lazerStarter.Click();
 
         }
         else if(Input.GetMouseButtonUp(0))
         {
-            lazerStarter.Stop();
+            //lazerStarter.Stop();
         }
 
 

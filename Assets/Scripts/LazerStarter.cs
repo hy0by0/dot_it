@@ -13,13 +13,16 @@ public class LazerStarter : MonoBehaviour
 
     public void Start()
     {
-        newLazer = Instantiate(lazerMother, this.gameObject.transform.position, Quaternion.identity);//lazerMotherを生成
-        lazer = newLazer.GetComponent<Lazer>();
-        lazer.creat(newLazer.transform.position, direction_First, 0); //ここで最初の０反射目レーザーを生成
+        
     }
 
     public void Update()
     {
+        if (newLazer == null)
+        {
+            return;
+        }
+
         // 左回転
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -30,6 +33,18 @@ public class LazerStarter : MonoBehaviour
         {
             lazer.move(lazer.getOrigin(), Quaternion.Euler(0f, 0f, -rotate_Speed) * lazer.getDirection());
         }
+    }
+
+    public void Click()
+    {
+        newLazer = Instantiate(lazerMother, this.gameObject.transform.position, Quaternion.identity);//lazerMotherを生成
+        lazer = newLazer.GetComponent<Lazer>();
+        lazer.creat(newLazer.transform.position, direction_First, 0); //ここで最初の０反射目レーザーを生成
+    }
+
+    public void Stop()
+    {
+        Destroy(newLazer);
     }
 
 }

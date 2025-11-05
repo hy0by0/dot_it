@@ -28,10 +28,10 @@ public class Lazer : MonoBehaviour
     {
         if (n == 0)
         {
-            nowOrigin = origin; //現在のレーザーの原点座標を更新
-            nowDirection = direction; //現在のレーザーの方向を更新
+            nowOrigin = origin; //現在のレーザーの始点座標を初期化
+            nowDirection = direction; //現在のレーザーの方向を初期化
             lazers_Line = new LineRenderer[max_Reflect + 1];//LineRendererを最大反射回数＋１本用意して格納しておく
-            preWall = null;
+            preWall = null; //preWallの初期化
         }
         // 反射回数１以上からはここで生成
         if (n < max_Reflect + 1)

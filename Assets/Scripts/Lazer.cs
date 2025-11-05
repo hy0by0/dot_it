@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Lazer : MonoBehaviour
 {
     [SerializeField] private GameObject lazerPrefab;
-    const float MAX_DISTANCE = 23.0f;  //箱の対角線の長さ（レーザーの最大長を設定）
-    const int REFLECT_NUM = 3;  //反射回数
+    const float max_Length = 23.0f;  //レーザーの最大長
+
+    const int max_Reflect = 3;  //反射回数
     private GameObject preWall;
 
     /**
@@ -19,16 +20,16 @@ public class Lazer : MonoBehaviour
     public void creat(Vector3 origin, Vector2 direction, int n)
     {
         if (n == 0) preWall = null;
-        if (n < REFLECT_NUM + 1)
+        if (n < max_Reflect + 1)
         {
             GameObject lazerChild = Instantiate(lazerPrefab, this.transform);
             lazerChild.name = "lazer_" + n;
             LineRenderer line = lazerChild.GetComponent<LineRenderer>();
-            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, MAX_DISTANCE);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(origin, direction, max_Length);
 
             foreach (RaycastHit2D hit in hits)
             {
-                if (hit.collider.gameObject != preWall)
+                if (hit.collider.gameObject != preWall && hit.collider.gameObject.tag != "Player")
                 {
                     Vector3 endPos = hit.point;
                     Vector2 reflectDirection = Vector2.Reflect(direction, hit.normal);

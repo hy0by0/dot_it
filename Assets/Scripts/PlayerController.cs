@@ -17,8 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool jumpFlag = false;
     float Scale_X; //向き変更用の大きさＸ方向の変数
 
-    public GameObject lazerObj; //レーザーオブジェクトを入れる
-    Line lazer; //ここのクラス変数変更しておく
+    public LazerStarter lazerStarter;//LazerStarterを入れる
     Rigidbody2D rbody;
 
     public static string gameState = "playing";
@@ -26,7 +25,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rbody = this.GetComponent<Rigidbody2D>();
-        lazer = lazerObj.GetComponent<Line>();
+        //lazer = lazerObj.GetComponent<Line>();
         //animator = GetComponent<Animator>();
         //nowAnime = stopAnime;
         //oldAnime = stopAnime;
@@ -45,15 +44,12 @@ public class PlayerController : MonoBehaviour
         axisX = Input.GetAxisRaw("Horizontal"); //左右入力を感知
         axisY = Input.GetAxisRaw("Vertical"); //上下入力を感知
 
-        if (!lazer.backFlag && !lazer.moving)
+        if (Input.GetMouseButtonDown(0))
         {
-            if(lazer.getCount != 0)
-            {
-                score += lazer.tongueScore * (1.0f + 0.5f*(lazer.getCount - 1) ); //score加算
-                lazer.tongueScore = 0.0f;
-                lazer.getCount = 0;
-            }
+            lazerStarter.Click();
+
         }
+
 
 
 
@@ -111,11 +107,11 @@ public class PlayerController : MonoBehaviour
             Goal();
         }
 
-        if (collider.gameObject.tag == "Damage" || collider.gameObject.tag == "Lazer")
-        {
-            Debug.Log("<color=red>痛い！</color>");
-            Miss();
-        }
+        //if (collider.gameObject.tag == "Damage" || collider.gameObject.tag == "Lazer")
+        //{
+        //    Debug.Log("<color=red>痛い！</color>");
+        //    Miss();
+        //}
 
         if (collider.gameObject.tag == "Item")
         {

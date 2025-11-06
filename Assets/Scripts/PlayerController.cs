@@ -46,12 +46,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            //lazerStarter.Click();
+            lazerStarter.Click();
 
         }
         else if(Input.GetMouseButtonUp(0))
         {
-            //lazerStarter.Stop();
+            lazerStarter.Stop();
         }
 
 
@@ -114,11 +114,11 @@ public class PlayerController : MonoBehaviour
             Goal();
         }
 
-        //if (collider.gameObject.tag == "Damage" || collider.gameObject.tag == "Laser")
-        //{
-        //    Debug.Log("<color=red>痛い！</color>");
-        //    Miss();
-        //}
+        if (collider.gameObject.tag == "Damage" || collider.gameObject.tag == "Laser")
+        {
+            Debug.Log("<color=red>痛い！</color>");
+            Miss();
+        }
 
         if (collider.gameObject.tag == "Item")
         {
@@ -140,11 +140,11 @@ public class PlayerController : MonoBehaviour
 
     public void Miss()
     {
-        //Debug.Log("<color=red>いってええええ！</color>");
-        gameState = "miss";
+        Debug.Log("<color=red>いってええええ！</color>");
+        //gameState = "miss";
         //animator.Play(missAnime);
         //transform.DOLocalMoveY(1, 1f);
-        GameStop();
+        //GameStop();
     }
 
 

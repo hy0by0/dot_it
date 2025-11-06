@@ -17,9 +17,9 @@ public class LaserStarter : MonoBehaviour
     public void Start()
     {
         //axisX_Lazer = 0.0f;
-        newLaser = Instantiate(laserMother, this.gameObject.transform.position, Quaternion.identity);//lazerMotherを生成
-        laser = newLaser.GetComponent<Laser>();
-        laser.creat(newLaser.transform.position, direction_First, 0); //ここで最初の０反射目レーザーを生成
+        //newLaser = Instantiate(laserMother, this.gameObject.transform.position, Quaternion.identity);//lazerMotherを生成
+        //laser = newLaser.GetComponent<Laser>();
+        //laser.creat(newLaser.transform.position, direction_First, 0); //ここで最初の０反射目レーザーを生成
     }
 
     public void Update()

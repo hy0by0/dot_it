@@ -45,6 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 6103521786597352152, guid: 3eeeb92d4f0930e408d83764009df3ec, type: 3}
+  max_Length: 23
+  max_Reflect: 1
   lasers_Line: []
+  lasers_Collider: []
   nowOrigin: {x: 0, y: 0, z: 0}
   nowDirection: {x: 0, y: 0}
+  linePoints: []

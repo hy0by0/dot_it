@@ -8,10 +8,10 @@ public class Laser : MonoBehaviour
     [Header("LaserのPrefabをここに入れる")]
     [SerializeField] private GameObject laserPrefab;
     [Header("レーザーの最大長")]
-    public const float max_Length = 23.0f;  //レーザーの最大長
+    public float max_Length = 23.0f;  //レーザーの最大長
 
     [Header("反射回数")]
-    public const int max_Reflect = 3;  //反射回数
+    public int max_Reflect = 3;  //反射回数
 
     private GameObject preWall; //同じ方向の壁に連続で当たらないようにするための変数
     public LineRenderer[] lasers_Line;

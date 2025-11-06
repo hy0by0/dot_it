@@ -95,65 +95,47 @@ public class Laser : MonoBehaviour
         Vector3 startPos = origin;
         Vector2 nextDirection = direction;
 
-        //全部のレーザー辺に対して始点と終点を更新し、LineRendererとEdgeCollider2Dを1つずつ更新していく
-        foreach (LineRenderer line in lasers_Line)
+        // LineRendererとEdgeCollider2Dを更新
+        for (int i = 0; i < lasers_Line.Length; i++)
         {
+            LineRenderer line = lasers_Line[i];
+            EdgeCollider2D edge = lasers_Collider[i];
+
+            if (line == null || edge == null) continue;
+
             RaycastHit2D[] hits = Physics2D.RaycastAll(startPos, nextDirection, max_Length);
 
             foreach (RaycastHit2D hit in hits)
             {
-                //同じ方向の壁に連続で当たらないようにするため、preWallを除外
-                if (hit.collider.gameObject != preWall && hit.collider.gameObject.tag == "Wall")
+                if (hit.collider.gameObject != preWall && hit.collider.CompareTag("Wall"))
                 {
                     Vector3 endPos = hit.point;
                     Vector2 reflectDirection = Vector2.Reflect(nextDirection, hit.normal);
-                    line.SetPosition(0, startPos); //ここで始点を更新
-                    line.SetPosition(1, endPos); //ここで終点を更新
-                    preWall = hit.collider.gameObject;
-                    startPos = endPos; //終点の座標を次のレーザーオブジェの始点座標へ反映
-                    nextDirection = reflectDirection; //反射ベクトルを次のレーザーオブジェの方向へ反映
-                    break;
-                }
-            }
-        }
 
-        // 最初の位置がずれている？↑とまとめる必要がありそう？startPosが上で更新されてしまうためにずれてる？
-        //全部のレーザー辺に対して始点と終点を更新し、EdgeCollider2Dを1つずつ更新していく
-        foreach (EdgeCollider2D edge in lasers_Collider)
-        {
-            RaycastHit2D[] hits = Physics2D.RaycastAll(startPos, nextDirection, max_Length);
+                    // --- LineRenderer更新 ---
+                    line.SetPosition(0, startPos);
+                    line.SetPosition(1, endPos);
 
-            foreach (RaycastHit2D hit in hits)
-            {
-                //同じ方向の壁に連続で当たらないようにするため、preWallを除外
-                if (hit.collider.gameObject != preWall && hit.collider.gameObject.tag == "Wall")
+                    // --- EdgeCollider2D更新 ---
+                    var localPoints = new List<Vector2>
                 {
-                    Vector3 endPos = hit.point;
-                    Vector2 reflectDirection = Vector2.Reflect(nextDirection, hit.normal);
-                    linePoints.Add(startPos); //ここで始点を更新
-                    linePoints.Add(endPos); //ここで終点を更新
-                    // EdgeCollider2D のために 頂点ベクトルをVector2 に変換
-                    List<Vector2> edgePoints = new List<Vector2>();
-                    foreach (var point in linePoints)
-                    {
-                        // ワールド座標 → ローカル座標へ変換しておく
-                        Vector2 localPoint = edge.transform.InverseTransformPoint(point);
-                        edgePoints.Add(localPoint);
-                    } 
-                    edge.SetPoints(edgePoints); //ここでedgeの頂点の座標を反映
-                    linePoints = new List<Vector3>(); //１つのレーザーのedgeCollider2dを反映ごとに初期化させておく
-                    edgePoints = new List<Vector2>(); // 同様に初期化させておく
+                    edge.transform.InverseTransformPoint(startPos),
+                    edge.transform.InverseTransformPoint(endPos)
+                };
+                    edge.SetPoints(localPoints);
 
-
+                    // 次のレーザー反射用に情報更新
                     preWall = hit.collider.gameObject;
-                    startPos = endPos; //終点の座標を次のレーザーオブジェの始点座標へ反映
-                    nextDirection = reflectDirection; //反射ベクトルを次のレーザーオブジェの方向へ反映
-                    break;
+                    startPos = endPos;
+                    nextDirection = reflectDirection;
+
+                    break; // 次のレーザーへ
                 }
             }
         }
-
     }
+
+
 
     /// <summary>
     /// 現在のレーザーの原点座標を取得する関数

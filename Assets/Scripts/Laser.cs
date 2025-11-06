@@ -64,7 +64,9 @@ public class Laser : MonoBehaviour
                     List<Vector2> edgePoints = new List<Vector2>();
                     foreach (var point in linePoints)
                     {
-                        edgePoints.Add(new Vector2(point.x, point.y));
+                        // ワールド座標 → ローカル座標へ変換しておく
+                        Vector2 localPoint = edge.transform.InverseTransformPoint(point);
+                        edgePoints.Add(localPoint);
                     }
                     edge.SetPoints(edgePoints); //ここでedgeの頂点の座標を反映
                     linePoints = new List<Vector3>(); //１つのレーザーのedgeCollider2dを反映ごとに初期化させておく
@@ -115,7 +117,7 @@ public class Laser : MonoBehaviour
             }
         }
 
-        // 最初の位置がずれている？
+        // 最初の位置がずれている？↑とまとめる必要がありそう？startPosが上で更新されてしまうためにずれてる？
         //全部のレーザー辺に対して始点と終点を更新し、EdgeCollider2Dを1つずつ更新していく
         foreach (EdgeCollider2D edge in lasers_Collider)
         {
@@ -134,7 +136,9 @@ public class Laser : MonoBehaviour
                     List<Vector2> edgePoints = new List<Vector2>();
                     foreach (var point in linePoints)
                     {
-                        edgePoints.Add(new Vector2(point.x, point.y));
+                        // ワールド座標 → ローカル座標へ変換しておく
+                        Vector2 localPoint = edge.transform.InverseTransformPoint(point);
+                        edgePoints.Add(localPoint);
                     } 
                     edge.SetPoints(edgePoints); //ここでedgeの頂点の座標を反映
                     linePoints = new List<Vector3>(); //１つのレーザーのedgeCollider2dを反映ごとに初期化させておく
